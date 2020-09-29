@@ -2,10 +2,9 @@
  * Site header
  */
 .site-header {
-  border-top: 5px solid $border-color-03;
-  border-bottom: 1px solid $border-color-01;
-  min-height: $spacing-unit * 1.865;
-  line-height: $base-line-height * $base-font-size * 2.25;
+  border-bottom: 1px solid $text-color;
+  // min-height: $spacing-unit * 1.865;
+  // line-height: $base-line-height * $base-font-size * 2.25;
 
   // Positioning context for the mobile navigation icon
   position: relative;
@@ -29,55 +28,16 @@
 }
 
 .site-nav {
-  position: absolute;
-  top: 9px;
-  right: $spacing-unit / 2;
+  display: inline;
+  float: right;
   background-color: $background-color;
-  border: 1px solid $border-color-01;
-  border-radius: 5px;
   text-align: right;
-
-  .nav-trigger {
-    display: none;
-  }
-
-  .menu-icon {
-    float: right;
-    width: 36px;
-    height: 26px;
-    line-height: 0;
-    padding-top: 10px;
-    text-align: center;
-
-    > svg path {
-      fill: $border-color-03;
-    }
-  }
-
-  label[for="nav-trigger"] {
-    display: block;
-    float: right;
-    width: 36px;
-    height: 36px;
-    z-index: 2;
-    cursor: pointer;
-  }
-
-  input ~ .trigger {
-    clear: both;
-    display: none;
-  }
-
-  input:checked ~ .trigger {
-    display: block;
-    padding-bottom: 5px;
-  }
+  margin-top: 0.5em;
 
   .page-link {
     color: $text-color;
     line-height: $base-line-height;
-    display: block;
-    padding: 5px 10px;
+    display: inline;
 
     // Gaps between nav items, but not on the last one
     &:not(:last-child) {
@@ -86,43 +46,41 @@
     margin-left: 20px;
   }
 
-  @media screen and (min-width: $on-medium) {
-    position: static;
-    float: right;
-    border: none;
-    background-color: inherit;
+  // @media screen and (min-width: $on-medium) {
+  //   position: static;
+  //   float: right;
+  //   border: none;
+  //   background-color: inherit;
 
-    label[for="nav-trigger"] {
-      display: none;
-    }
+  //   label[for="nav-trigger"] {
+  //     display: none;
+  //   }
 
-    .menu-icon {
-      display: none;
-    }
+  //   .menu-icon {
+  //     display: none;
+  //   }
 
-    input ~ .trigger {
-      display: block;
-    }
+  //   input ~ .trigger {
+  //     display: block;
+  //   }
 
-    .page-link {
-      display: inline;
-      padding: 0;
+  //   .page-link {
+  //     display: inline;
+  //     padding: 0;
 
-      &:not(:last-child) {
-        margin-right: 20px;
-      }
-      margin-left: auto;
-    }
-  }
+  //     &:not(:last-child) {
+  //       margin-right: 20px;
+  //     }
+  //     margin-left: auto;
+  //   }
+  // }
 }
-
-
 
 /**
  * Site footer
  */
 .site-footer {
-  border-top: 1px solid $border-color-01;
+  border-top: 1px solid $text-color;
   padding: $spacing-unit 0;
 }
 
@@ -132,7 +90,7 @@
 }
 
 .feed-subscribe .svg-icon {
-  padding: 5px 5px 2px 0
+  padding: 5px 5px 2px 0;
 }
 
 .contact-list,
@@ -147,55 +105,35 @@
   color: $brand-color;
 }
 
-.footer-col {
-  margin-bottom: $spacing-unit / 2;
+.footer-col-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
 }
 
-.footer-col-1,
+.footer-col-1 {
+}
+
 .footer-col-2 {
-  width: calc(50% - (#{$spacing-unit} / 2));
 }
 
 .footer-col-3 {
-  width: calc(100% - (#{$spacing-unit} / 2));
 }
 
-@media screen and (min-width: $on-large) {
-  .footer-col-1 {
-    width: calc(35% - (#{$spacing-unit} / 2));
-  }
-
-  .footer-col-2 {
-    width: calc(20% - (#{$spacing-unit} / 2));
-  }
-
-  .footer-col-3 {
-    width: calc(45% - (#{$spacing-unit} / 2));
-  }
-}
-
-@media screen and (min-width: $on-medium) {
+@media screen and (max-width: $on-palm) {
   .footer-col-wrapper {
-    display: flex
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
-
-  .footer-col {
-    width: calc(100% - (#{$spacing-unit} / 2));
-    padding: 0 ($spacing-unit / 2);
-
-    &:first-child {
-      padding-right: $spacing-unit / 2;
-      padding-left: 0;
-    }
-
-    &:last-child {
-      padding-right: 0;
-      padding-left: $spacing-unit / 2;
-    }
+  .footer-col-3 {
+    grid-column: 1 / -1;
+    grid-row: 2;
   }
 }
 
-
+.footer-col {
+  margin-bottom: $spacing-unit / 2;
+  padding-left: $spacing-unit / 2;
+}
 
 /**
  * Page content
@@ -229,10 +167,8 @@
 
 .post-link {
   display: block;
-  @include relative-font-size(1.5);
+  @include relative-font-size(1.25);
 }
-
-
 
 /**
  * Posts
@@ -243,9 +179,8 @@
 
 .post-title,
 .post-content h1 {
-  @include relative-font-size(2.625);
+  @include relative-font-size(2);
   letter-spacing: -1px;
-  line-height: 1.15;
 
   @media screen and (min-width: $on-large) {
     @include relative-font-size(2.625);
@@ -255,8 +190,16 @@
 .post-content {
   margin-bottom: $spacing-unit;
 
-  h1, h2, h3 { margin-top: $spacing-unit * 2 }
-  h4, h5, h6 { margin-top: $spacing-unit }
+  h1,
+  h2,
+  h3 {
+    margin-top: 0.67em;
+  }
+  h4,
+  h5,
+  h6 {
+    margin-top: 0.335em;
+  }
 
   h2 {
     @include relative-font-size(1.75);
@@ -286,24 +229,18 @@
   }
 }
 
-
 .social-media-list {
-  display: table;
   margin: 0 auto;
   li {
-    float: left;
-    margin: 5px 10px 5px 0;
-    &:last-of-type { margin-right: 0 }
+    // margin: 0 10px 5px 0;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
     a {
-      display: block;
       padding: $spacing-unit / 4;
-      border: 1px solid $border-color-01;
-      &:hover { border-color: $border-color-02 }
     }
   }
 }
-
-
 
 /**
  * Pagination navbar
@@ -312,7 +249,8 @@
   margin-bottom: $spacing-unit;
   @extend .social-media-list;
   li {
-    a, div {
+    a,
+    div {
       min-width: 41px;
       text-align: center;
       box-sizing: border-box;
@@ -329,8 +267,6 @@
     }
   }
 }
-
-
 
 /**
  * Grid helpers
