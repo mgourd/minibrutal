@@ -28,11 +28,11 @@
 }
 
 .site-nav {
-  display: inline;
+  display: block;
   float: right;
   background-color: $background-color;
   text-align: right;
-  margin-top: 0.5em;
+  margin: 0.5em 0;
 
   .page-link {
     color: $text-color;
@@ -40,6 +40,12 @@
     display: inline;
 
     // Gaps between nav items, but not on the last one
+    @media screen and (max-width: $on-palm) {
+      &:is(:first-child) {
+        margin-left: 0;
+      }
+    }
+
     &:not(:last-child) {
       margin-right: 0;
     }
@@ -76,9 +82,10 @@
   // }
 }
 
-/**
- * Site footer
- */
+@media screen and (max-width: $on-palm) {
+}
+
+/** * Site footer */
 .site-footer {
   border-top: 1px solid $text-color;
   padding: $spacing-unit 0;
@@ -232,7 +239,6 @@
 .social-media-list {
   margin: 0 auto;
   li {
-    // margin: 0 10px 5px 0;
     &:last-of-type {
       margin-bottom: 0;
     }
